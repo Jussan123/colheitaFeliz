@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { auth } from "../config/firebase";
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,7 +18,8 @@ const LoginScreen = () => {
     console.log("Executando login");
     console.log(email, password);
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      var user = userCredential.user;
+      console.log(userCredential);
+      navigation.navigate("HomeScreen");
     });
   }
 
@@ -47,6 +48,7 @@ const LoginScreen = () => {
       <TouchableOpacity style={styles.button} onPress={executaLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
+      <Button mode="text" onPress={() => navigation.navigate("Register")}></Button>
     </View>
   );
 };
