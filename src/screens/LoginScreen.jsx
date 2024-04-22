@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { auth } from "../config/firebase";
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,6 +22,12 @@ const LoginScreen = ({navigation}) => {
       navigation.navigate("HomeScreen");
     });
   }
+
+  function executaCadastro() {
+    console.log("Tela de cadastro");
+    navigation.navigate("CadastroScreen")
+  }
+
 
   return (
     <View style={styles.container}>
@@ -48,7 +54,9 @@ const LoginScreen = ({navigation}) => {
       <TouchableOpacity style={styles.button} onPress={executaLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
-      <Button mode="text" onPress={() => navigation.navigate("Register")}></Button>
+      <TouchableOpacity style={styles.button} onPress={executaCadastro}>
+        <Text style={styles.registerButtonText}>Cadastre-se</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -86,6 +94,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  registerButton: {
+    width: "100%",
+    height: 40,
+    backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  registerButtonText: {
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
